@@ -781,8 +781,7 @@ class AuraSR:
             hf_model_path = Path(snapshot_download(model_id))
             config = json.loads((hf_model_path / "config.json").read_text())
 
-        config["device"] = device
-        model = cls(config)
+        model = cls(config, device=device)
 
         if use_safetensors:
             try:
